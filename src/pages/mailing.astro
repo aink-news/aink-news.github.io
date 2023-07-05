@@ -1,13 +1,11 @@
 ---
 import "@fontsource-variable/chivo";
 import "@fontsource/rajdhani/500.css";
-
-import Content from "../components/about.md";
 ---
 
 <head>
     <meta charset="utf-8">
-    <title>AInk News – About</title>
+    <title>AInk News – Mailing List</title>
 </head>
 
 <nav class="flex items-center w-screen h-20 p-3 static-bg">
@@ -32,7 +30,27 @@ import Content from "../components/about.md";
 </nav>
 
 <div class="content max-w-full mx-auto py-10 px-3">
-    <Content>
+    <h1 class="text-5xl">Mailing List</h1>
+    <form method="post" action="https://listmonk.aink.news/subscription/form" class="listmonk-form pt-2">
+        <div>
+            <h3>Subscribe</h3>
+            <input type="hidden" name="nonce">
+            <p><input type="email" name="email" required placeholder="E-mail"></p>
+            <p><input type="text" name="name" placeholder="Name (optional)"></p>
+
+            <p>
+                <input id="a2984" type="checkbox" name="l" checked value="a29848a5-b504-4bde-bb93-df7cc277adcf">
+                <label for="a2984">Product Updates</label><br><span>Recife updates on the product and questionnaires to improve our product.</span>
+            </p>
+            <p>
+                <input id="acd31" type="checkbox" name="l" checked value="acd312a0-a276-4593-882d-0110b5bcf647" />
+                <label for="acd31">Product Launch</label><br><span>Get notified when we launch our product.
+    </span>
+            </p>
+
+            <p><input type="submit" value="Subscribe"></p>
+        </div>
+    </form>
 </div>
 
 <style>
@@ -71,12 +89,5 @@ import Content from "../components/about.md";
 
     .content {
         width: 1280px;
-    }
-</style>
-<style is:global>
-    .content h1 {
-        font-size: 3rem;
-        font-weight: 600;
-        font-family: "Chivo Variable", sans-serif;
     }
 </style>
