@@ -4,144 +4,136 @@ import "@fontsource/rajdhani/500.css";
 ---
 
 <head>
-	<title>AInk News</title>
+    <meta charset="utf-8">
+    <title>AInk News</title>
 </head>
 
-<div class="grid h-screen place-items-center bg-fixed moving-bg">
-	<div>
-		<h1 class="text-center text-9xl text-white title-writing">AInk News</h1>
-		<h2 class="text-left text-3xl text-white undertitle-writing">
-			Tailor-made news experiences
-		</h2>
-	</div>
-</div>
-<div class="grid place-items-center grid-cols-3 grid-rows-1 p-3">
-	<a class="moving-button" href="/about">
-		<h3 class="text-2xl">About</h3>
-	</a>
-	<a class="moving-button" href="/mailing">
-		<h3 class="text-2xl">Mailing List</h3>
-	</a>
-	<a class="moving-button" href="/socialmedia">
-		<h3 class="text-2xl">Social Media</h3>
-	</a>
+<div class="h-screen bg-fixed moving-bg">
+    <nav class="absolute w-screen flex justify-center items-center gap-10 h-20 p-3">
+        <a class="nav-link text-2xl" href="/about">
+            About
+        </a>
+        <a class="nav-link text-2xl" href="/mailing">
+            Mailing List
+        </a>
+        <a class="nav-link text-2xl" href="/socialmedia">
+            Social Media
+        </a>
+    </nav>
+    <div class="grid h-full place-items-center">
+        <div>
+            <h1 class="text-center text-9xl text-white title-writing">AInk News</h1>
+            <h2 class="text-left text-3xl text-white undertitle-writing">
+                Tailor-made news experiences
+            </h2>
+        </div>
+    </div>
 </div>
 
 <style>
-	:root {
-		--top-color: rgb(146, 44, 174);
-		--bottom-color: rgb(123, 0, 100);
-		--degree: 0deg;
-		--accent-color: #5b49e3;
-	}
+    :root {
+        --top-color: rgb(146, 44, 174);
+        --bottom-color: rgb(123, 0, 100);
+        --degree: 0deg;
+        --accent-color: #5b49e3;
+    }
 
-	.moving-button {
-		border-radius: 0.375rem;
-		background-color: var(--accent-color);
-		color: white;
-		padding: 0.75rem;
-		transform: translateY(0rem);
-		transition: transform 0.25s ease-in-out, box-shadow 0.25s ease-in-out,
-			border-width 0.25s ease-in-out, border-color 0.25s ease-in-out;
-		border-width: 0rem;
-		border-color: var(--accent-color);
-	}
+    .nav-link {
+        color: rgba(255, 255, 255, 0.6);
+    }
 
-	.moving-button:hover {
-		transform: translateY(-0.5rem);
-		box-shadow: 0rem 0.75rem 1rem var(--accent-color);
-		border-width: 0.125rem;
-		border-color: white;
-	}
+    .nav-link:hover {
+        color: rgba(255, 255, 255, 1);
+    }
 
-	.moving-bg {
-		background: linear-gradient(
-			var(--degree),
-			var(--top-color) 0%,
-			var(--accent-color) 45%,
-			var(--accent-color) 55%,
-			var(--bottom-color) 100%
-		);
-	}
+    .moving-bg {
+        background: linear-gradient(
+            var(--degree),
+            var(--top-color) 0%,
+            var(--accent-color) 45%,
+            var(--accent-color) 55%,
+            var(--bottom-color) 100%
+        );
+    }
 
-	.title-writing {
-		font-family: "Chivo Variable", sans-serif;
-	}
+    .title-writing {
+        font-family: "Chivo Variable", sans-serif;
+    }
 
-	.undertitle-writing {
-		font-family: "Rajdhani", sans-serif;
-	}
+    .undertitle-writing {
+        font-family: "Rajdhani", sans-serif;
+    }
 </style>
 
 <script>
-	interface RgbColor {
-		r: number;
-		g: number;
-		b: number;
-	}
+    interface RgbColor {
+        r: number;
+        g: number;
+        b: number;
+    }
 
-	const topColors: RgbColor[] = [
-		{ r: 146, g: 44, b: 174 },
-		{ r: 50, g: 81, b: 146 },
-		{ r: 45, g: 120, b: 163 },
-		{ r: 29, g: 163, b: 143 },
-	];
-	const bottomColors: RgbColor[] = [
-		{ r: 123, g: 0, b: 100 },
-		{ r: 138, g: 26, b: 87 },
-		{ r: 153, g: 52, b: 74 },
-		{ r: 183, g: 0, b: 0 },
-	];
-	const around_time = 20;
+    const topColors: RgbColor[] = [
+        { r: 146, g: 44, b: 174 },
+        { r: 50, g: 81, b: 146 },
+        { r: 45, g: 120, b: 163 },
+        { r: 29, g: 163, b: 143 },
+    ];
+    const bottomColors: RgbColor[] = [
+        { r: 123, g: 0, b: 100 },
+        { r: 138, g: 26, b: 87 },
+        { r: 153, g: 52, b: 74 },
+        { r: 183, g: 0, b: 0 },
+    ];
+    const around_time = 20;
 
-	let startTime: number = Date.now();
+    let startTime: number = Date.now();
 
-	// a function that given two colors and a percentage returns the interpolated color between them
-	function getColorBetween(
-		color1: RgbColor,
-		color2: RgbColor,
-		percentage: number
-	): RgbColor {
-		const r = Math.round(color1.r + (color2.r - color1.r) * percentage);
-		const g = Math.round(color1.g + (color2.g - color1.g) * percentage);
-		const b = Math.round(color1.b + (color2.b - color1.b) * percentage);
-		return { r, g, b };
-	}
+    // a function that given two colors and a percentage returns the interpolated color between them
+    function getColorBetween(
+        color1: RgbColor,
+        color2: RgbColor,
+        percentage: number
+    ): RgbColor {
+        const r = Math.round(color1.r + (color2.r - color1.r) * percentage);
+        const g = Math.round(color1.g + (color2.g - color1.g) * percentage);
+        const b = Math.round(color1.b + (color2.b - color1.b) * percentage);
+        return { r, g, b };
+    }
 
-	let counter = 0;
+    let counter = 0;
 
-	// a function that runs every frame, updating the background color variables and the degrees. Between every color there should be a smooth interpolation. A round trip of all colors should take around_time seconds.
-	function updateBackground() {
-		const now = Date.now();
-		const time = (now - startTime) / 1000;
-		const percentage = (time % around_time) / around_time;
-		const currentIdx = Math.floor(time / around_time) % topColors.length;
-		const nextIdx = (currentIdx + 1) % topColors.length;
-		const currentTopColor = topColors[currentIdx];
-		const currentBottomColor = bottomColors[currentIdx];
-		const nextTopColor = topColors[nextIdx];
-		const nextBottomColor = bottomColors[nextIdx];
-		const topColor = getColorBetween(
-			currentTopColor,
-			nextTopColor,
-			percentage
-		);
-		const bottomColor = getColorBetween(
-			currentBottomColor,
-			nextBottomColor,
-			percentage
-		);
-		const degree = 360 * percentage;
-		document.documentElement.style.setProperty(
-			"--top-color",
-			`rgb(${topColor.r}, ${topColor.g}, ${topColor.b})`
-		);
-		document.documentElement.style.setProperty(
-			"--bottom-color",
-			`rgb(${bottomColor.r}, ${bottomColor.g}, ${bottomColor.b})`
-		);
-		document.documentElement.style.setProperty("--degree", `${degree}deg`);
-		requestAnimationFrame(updateBackground);
-	}
-	requestAnimationFrame(updateBackground);
+    // a function that runs every frame, updating the background color variables and the degrees. Between every color there should be a smooth interpolation. A round trip of all colors should take around_time seconds.
+    function updateBackground() {
+        const now = Date.now();
+        const time = (now - startTime) / 1000;
+        const percentage = (time % around_time) / around_time;
+        const currentIdx = Math.floor(time / around_time) % topColors.length;
+        const nextIdx = (currentIdx + 1) % topColors.length;
+        const currentTopColor = topColors[currentIdx];
+        const currentBottomColor = bottomColors[currentIdx];
+        const nextTopColor = topColors[nextIdx];
+        const nextBottomColor = bottomColors[nextIdx];
+        const topColor = getColorBetween(
+            currentTopColor,
+            nextTopColor,
+            percentage
+        );
+        const bottomColor = getColorBetween(
+            currentBottomColor,
+            nextBottomColor,
+            percentage
+        );
+        const degree = 360 * percentage;
+        document.documentElement.style.setProperty(
+            "--top-color",
+            `rgb(${topColor.r}, ${topColor.g}, ${topColor.b})`
+        );
+        document.documentElement.style.setProperty(
+            "--bottom-color",
+            `rgb(${bottomColor.r}, ${bottomColor.g}, ${bottomColor.b})`
+        );
+        document.documentElement.style.setProperty("--degree", `${degree}deg`);
+        requestAnimationFrame(updateBackground);
+    }
+    requestAnimationFrame(updateBackground);
 </script>
