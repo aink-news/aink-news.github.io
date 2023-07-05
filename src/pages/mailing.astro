@@ -8,49 +8,60 @@ import "@fontsource/rajdhani/500.css";
     <title>AInk News – Mailing List</title>
 </head>
 
-<nav class="flex items-center w-screen h-20 p-3 static-bg">
-    <div class="text-4xl h-[1em]">
-        <div class="absolute">
-            <a class="nav-home" href="/">
-                <h1 class="title-writing">AInk News</h1>
+<div class="h-screen bg-fixed moving-bg">
+    <nav class="absolute flex items-center w-screen h-20 p-3">
+        <div class="text-4xl h-[1em]">
+            <div class="absolute">
+                <a class="nav-home" href="/">
+                    <h1 class="title-writing">AInk News</h1>
+                </a>
+            </div>
+        </div>
+        <div class="flex justify-center items-center grow gap-10">
+            <a class="nav-link text-2xl" href="/about">
+                About
+            </a>
+            <a class="nav-link active text-2xl" href="/mailing">
+                Mailing List
+            </a>
+            <a class="nav-link text-2xl" href="/socialmedia">
+                Social Media
             </a>
         </div>
+    </nav>
+    <div class="grid h-full place-items-center">
+        <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white shadow-md rounded w-1/5 px-8 pt-6 pb-8 mb-4">
+            <div class="mb-4">
+                <h2 class="text-3xl">Mailing List</h2>
+                <input type="hidden" name="nonce">
+            </div>
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                    E-mail
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" placeholder="E-mail" required>
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+                    Name
+                </label>
+                <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" name="name" placeholder="Name (optional)">
+            </div>
+            <div class="mb-6">
+                <label class="md:w-2/3 block text-gray-500 font-bold" for="a2984">
+                    <input class="mr-2 leading-tight" id="a2984" type="checkbox" name="l" checked value="a29848a5-b504-4bde-bb93-df7cc277adcf">
+                    <span>Product Updates</span>
+                </label>
+                <label class="md:w-2/3 block text-gray-500 font-bold" for="acd31">
+                    <input class="mr-2 leading-tight" id="acd31" type="checkbox" name="l" checked value="acd312a0-a276-4593-882d-0110b5bcf647">
+                    <span>Product Launch</span>
+                </label>
+            </div>
+            <div class="flex items-center justify-center">
+                <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Subscribe">
+            </div>
+        </form>
     </div>
-    <div class="flex justify-center items-center grow gap-10">
-        <a class="nav-link text-2xl" href="/about">
-            About
-        </a>
-        <a class="nav-link text-2xl" href="/mailing">
-            Mailing List
-        </a>
-        <a class="nav-link text-2xl" href="/socialmedia">
-            Social Media
-        </a>
-    </div>
-</nav>
-
-<div class="content max-w-full mx-auto py-10 px-3">
-    <h1 class="text-5xl">Mailing List</h1>
-    <form method="post" action="https://listmonk.aink.news/subscription/form" class="listmonk-form pt-2">
-        <div>
-            <h3>Subscribe</h3>
-            <input type="hidden" name="nonce">
-            <p><input type="email" name="email" required placeholder="E-mail"></p>
-            <p><input type="text" name="name" placeholder="Name (optional)"></p>
-
-            <p>
-                <input id="a2984" type="checkbox" name="l" checked value="a29848a5-b504-4bde-bb93-df7cc277adcf">
-                <label for="a2984">Product Updates</label><br><span>Recife updates on the product and questionnaires to improve our product.</span>
-            </p>
-            <p>
-                <input id="acd31" type="checkbox" name="l" checked value="acd312a0-a276-4593-882d-0110b5bcf647" />
-                <label for="acd31">Product Launch</label><br><span>Get notified when we launch our product.
-    </span>
-            </p>
-
-            <p><input type="submit" value="Subscribe"></p>
-        </div>
-    </form>
 </div>
 
 <style>
@@ -69,11 +80,11 @@ import "@fontsource/rajdhani/500.css";
         color: rgba(255, 255, 255, 0.8);
     }
 
-    .nav-link:hover, .nav-home:hover {
+    .active, .nav-link:hover, .nav-home:hover {
         color: rgba(255, 255, 255, 1);
     }
 
-    .static-bg {
+    .moving-bg {
         background: linear-gradient(
             var(--degree),
             var(--top-color) 0%,
@@ -91,3 +102,77 @@ import "@fontsource/rajdhani/500.css";
         width: 1280px;
     }
 </style>
+
+
+<script>
+    interface RgbColor {
+        r: number;
+        g: number;
+        b: number;
+    }
+
+    const topColors: RgbColor[] = [
+        { r: 146, g: 44, b: 174 },
+        { r: 50, g: 81, b: 146 },
+        { r: 45, g: 120, b: 163 },
+        { r: 29, g: 163, b: 143 },
+    ];
+    const bottomColors: RgbColor[] = [
+        { r: 123, g: 0, b: 100 },
+        { r: 138, g: 26, b: 87 },
+        { r: 153, g: 52, b: 74 },
+        { r: 183, g: 0, b: 0 },
+    ];
+    const around_time = 20;
+
+    let startTime: number = Date.now();
+
+    // a function that given two colors and a percentage returns the interpolated color between them
+    function getColorBetween(
+        color1: RgbColor,
+        color2: RgbColor,
+        percentage: number
+    ): RgbColor {
+        const r = Math.round(color1.r + (color2.r - color1.r) * percentage);
+        const g = Math.round(color1.g + (color2.g - color1.g) * percentage);
+        const b = Math.round(color1.b + (color2.b - color1.b) * percentage);
+        return { r, g, b };
+    }
+
+    let counter = 0;
+
+    // a function that runs every frame, updating the background color variables and the degrees. Between every color there should be a smooth interpolation. A round trip of all colors should take around_time seconds.
+    function updateBackground() {
+        const now = Date.now();
+        const time = (now - startTime) / 1000;
+        const percentage = (time % around_time) / around_time;
+        const currentIdx = Math.floor(time / around_time) % topColors.length;
+        const nextIdx = (currentIdx + 1) % topColors.length;
+        const currentTopColor = topColors[currentIdx];
+        const currentBottomColor = bottomColors[currentIdx];
+        const nextTopColor = topColors[nextIdx];
+        const nextBottomColor = bottomColors[nextIdx];
+        const topColor = getColorBetween(
+            currentTopColor,
+            nextTopColor,
+            percentage
+        );
+        const bottomColor = getColorBetween(
+            currentBottomColor,
+            nextBottomColor,
+            percentage
+        );
+        const degree = 360 * percentage;
+        document.documentElement.style.setProperty(
+            "--top-color",
+            `rgb(${topColor.r}, ${topColor.g}, ${topColor.b})`
+        );
+        document.documentElement.style.setProperty(
+            "--bottom-color",
+            `rgb(${bottomColor.r}, ${bottomColor.g}, ${bottomColor.b})`
+        );
+        document.documentElement.style.setProperty("--degree", `${degree}deg`);
+        requestAnimationFrame(updateBackground);
+    }
+    requestAnimationFrame(updateBackground);
+</script>
