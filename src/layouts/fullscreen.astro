@@ -5,7 +5,7 @@ import '../styles/fullscreen.scss'
 const { title, activePage } = Astro.props
 ---
 <Base title={title}>
-    <div class="h-screen bg-fixed dynamic-bg">
+    <div class="h-screen dynamic-bg">
         <nav class="absolute w-screen flex justify-center items-center gap-10 h-20 p-3">
             <a class:list={['nav-link', {active: activePage === 'about'}, 'text-2xl']} href="/about">
                 About

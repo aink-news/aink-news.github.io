@@ -1,31 +1,31 @@
 ---
-import Fullscreen from '../layouts/fullscreen.astro'
+import Layout from '../layouts/fullscreen.astro'
 ---
 
-<Fullscreen title="AInk News – Mailing List" activePage="mailing">
-    <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white shadow-md rounded w-[95%] lg:w-1/5 px-8 pt-6 pb-8 mb-4">
+<Layout title="AInk News – Mailing List" activePage="mailing">
+    <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white dark:bg-slate-700 shadow-md rounded w-[95%] lg:w-1/5 px-8 pt-6 pb-8 mb-4">
         <div class="mb-4">
             <h2 class="text-3xl">Mailing List</h2>
             <input type="hidden" name="nonce">
         </div>
         <div class="mb-4">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+            <label class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2" for="email">
                 E-mail
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" name="email" placeholder="E-mail" required>
         </div>
         <div class="mb-6">
-            <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+            <label class="block text-gray-700 dark:text-gray-400 text-sm font-bold mb-2" for="name">
                 Name
             </label>
             <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" type="text" name="name" placeholder="Name (optional)">
         </div>
         <div class="mb-6">
-            <label class="md:w-2/3 block text-gray-500 font-bold" for="a2984">
+            <label class="md:w-2/3 block text-gray-500 dark:text-gray-400 font-bold" for="a2984">
                 <input class="mr-2 leading-tight" id="a2984" type="checkbox" name="l" checked value="a29848a5-b504-4bde-bb93-df7cc277adcf">
                 <span>Product Updates</span>
             </label>
-            <label class="md:w-2/3 block text-gray-500 font-bold" for="acd31">
+            <label class="md:w-2/3 block text-gray-500 dark:text-gray-400 font-bold" for="acd31">
                 <input class="mr-2 leading-tight" id="acd31" type="checkbox" name="l" checked value="acd312a0-a276-4593-882d-0110b5bcf647">
                 <span>Product Launch</span>
             </label>
@@ -34,4 +34,4 @@ import Fullscreen from '../layouts/fullscreen.astro'
             <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" value="Subscribe">
         </div>
     </form>
-</Fullscreen>
+</Layout>
