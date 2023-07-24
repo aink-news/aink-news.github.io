@@ -3,7 +3,7 @@ import Layout from '../layouts/fullscreen.astro'
 ---
 
 <Layout title="AInk News – Mailing List" activePage="mailing" showLogo>
-    <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white dark:bg-slate-700 shadow-md rounded w-[95%] lg:w-1/5 px-8 pt-6 pb-8 mb-4">
+    <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white dark:bg-slate-700 shadow-md rounded px-8 pt-6 pb-8 mb-4 form-width">
         <div class="mb-4">
             <h2 class="text-3xl">Mailing List</h2>
             <input type="hidden" name="nonce">
@@ -35,3 +35,9 @@ import Layout from '../layouts/fullscreen.astro'
         </div>
     </form>
 </Layout>
+
+<style lang="scss">
+    .form-width {
+        width: min(400px, 100vw - 1.5rem);
+    }
+</style>
