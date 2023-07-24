@@ -1,53 +1,85 @@
-@property --left-color {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: rgb(146, 44, 174);
-}
+@use 'sass:color';
+@use 'sass:math';
 
-@property --right-color {
-    syntax: '<color>';
-    inherits: false;
-    initial-value: rgb(123, 0, 100);
-}
+@mixin gradient-color($name, $colors) {
+    @property --#{$name} {
+        syntax: '<color>';
+        inherits: false;
+        initial-value: nth($colors, 1);
+    }
 
-@keyframes left-color {
-    from {
-        --left-color: rgb(146, 44, 174);
-    }
-    25% {
-        --left-color: rgb(50, 81, 146);
-    }
-    50% {
-        --left-color: rgb(45, 120, 163);
-    }
-    75% {
-        --left-color: rgb(29, 163, 143);
-    }
-    to {
-        --left-color: rgb(146, 44, 174);
+    @keyframes #{$name} {
+        $length: length($colors);
+        $step: math.div(100%, $length - 1);
+
+        @for $i from 1 through $length {
+            $color: nth($colors, $i);
+            $position: ($i - 1) * $step;
+
+            #{$position} {
+                --#{$name}: #{$color};
+            }
+        }
     }
 }
 
-@keyframes right-color {
-    from {
-        --right-color: rgb(123, 0, 100);
-    }
-    25% {
-        --right-color: rgb(138, 26, 87);
-    }
-    50% {
-        --right-color: rgb(153, 52, 74);
-    }
-    75% {
-        --right-color: rgb(183, 0, 0);
-    }
-    to {
-        --right-color: rgb(123, 0, 100);
-    }
-}
+$left-colors: (
+    rgb(146, 44, 174),
+    rgb(50, 81, 146),
+    rgb(45, 120, 163),
+    rgb(29, 163, 143),
+    rgb(146, 44, 174),
+);
+$right-colors: (
+    rgb(123, 0, 100),
+    rgb(138, 26, 87),
+    rgb(153, 52, 74),
+    rgb(183, 0, 0),
+    rgb(123, 0, 100),
+);
+
+$accent-color: #5b49e3;
 
 :root {
-    --accent-color: #5b49e3;
+    --left-color: #{nth($left-colors, 1)};
+    --right-color: #{nth($right-colors, 1)};
+    --accent-color: #{$accent-color};
+    --overlay-size-landscape: 50vh;
+    --overlay-size-portrait: 50vw;
+}
+
+@include gradient-color(left-color, $left-colors);
+@include gradient-color(right-color, $right-colors);
+
+@property --overlay-size-landscape {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 50vh;
+}
+
+@property --overlay-size-portrait {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 50vw;
+}
+
+@keyframes overlay-size {
+    from {
+        --overlay-size-landscape: 50vh;
+        --overlay-size-portrait: 50vw;
+    }
+    33% {
+        --overlay-size-landscape: 40vh;
+        --overlay-size-portrait: 40vw;
+    }
+    66% {
+        --overlay-size-landscape: 60vh;
+        --overlay-size-portrait: 60vw;
+    }
+    to {
+        --overlay-size-landscape: 50vh;
+        --overlay-size-portrait: 50vw;
+    }
 }
 
 .nav-link {
