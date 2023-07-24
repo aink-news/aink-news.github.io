@@ -2,7 +2,17 @@
 import Base from './base.astro'
 import '../styles/default.scss'
 
-const { title, activePage } = Astro.props.frontmatter || Astro.props
+interface ComponentProps {
+    title: string
+    activePage: string
+    showLogo: boolean
+}
+
+type Props = {
+    frontmatter: ComponentProps
+} | ComponentProps
+
+const { title, activePage } = "frontmatter" in Astro.props ? Astro.props.frontmatter : Astro.props
 ---
 <Base title={title}>
     <nav class="dynamic-bg flex flex-col lg:flex-row items-center w-screen h-20 p-3">

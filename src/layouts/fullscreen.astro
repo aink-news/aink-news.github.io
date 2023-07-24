@@ -2,20 +2,37 @@
 import Base from './base.astro'
 import '../styles/fullscreen.scss'
 
-const { title, activePage } = Astro.props
+interface Props {
+    title: string
+    activePage: string
+    showLogo?: boolean
+}
+
+const { title, activePage, showLogo } = Astro.props
 ---
 <Base title={title}>
     <div class="h-screen dynamic-bg">
-        <nav class="absolute w-screen flex justify-center items-center gap-10 h-20 p-3">
-            <a class:list={['nav-link', {active: activePage === 'about'}, 'text-2xl']} href="/about">
-                About
-            </a>
-            <a class:list={['nav-link', {active: activePage === 'mailing'}, 'text-2xl']} href="/mailing">
-                Mailing List
-            </a>
-            <a class:list={['nav-link', {active: activePage === 'socialmedia'}, 'text-2xl']} href="/socialmedia">
-                Social Media
-            </a>
+        <nav class="absolute flex flex-col lg:flex-row items-center w-screen h-20 p-3">
+            {showLogo &&
+                <div class="text-4xl h-[1em]">
+                    <div class="lg:absolute block">
+                        <a class="nav-home" href="/">
+                            <h1 class="title-writing">AInk News</h1>
+                        </a>
+                    </div>
+                </div>
+            }
+            <div class="flex justify-center items-center grow gap-10">
+                <a class:list={['nav-link', {active: activePage === 'about'}, 'text-2xl']} href="/about">
+                    About
+                </a>
+                <a class:list={['nav-link', {active: activePage === 'mailing'}, 'text-2xl']} href="/mailing">
+                    Mailing List
+                </a>
+                <a class:list={['nav-link', {active: activePage === 'socialmedia'}, 'text-2xl']} href="/socialmedia">
+                    Social Media
+                </a>
+            </div>
         </nav>
         <div class="grid h-full place-items-center">
             <slot />
