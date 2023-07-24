@@ -1,0 +1,75 @@
+@property --left-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgb(146, 44, 174);
+}
+
+@property --right-color {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: rgb(123, 0, 100);
+}
+
+@keyframes left-color {
+    from {
+        --left-color: rgb(146, 44, 174);
+    }
+    25% {
+        --left-color: rgb(50, 81, 146);
+    }
+    50% {
+        --left-color: rgb(45, 120, 163);
+    }
+    75% {
+        --left-color: rgb(29, 163, 143);
+    }
+    to {
+        --left-color: rgb(146, 44, 174);
+    }
+}
+
+@keyframes right-color {
+    from {
+        --right-color: rgb(123, 0, 100);
+    }
+    25% {
+        --right-color: rgb(138, 26, 87);
+    }
+    50% {
+        --right-color: rgb(153, 52, 74);
+    }
+    75% {
+        --right-color: rgb(183, 0, 0);
+    }
+    to {
+        --right-color: rgb(123, 0, 100);
+    }
+}
+
+:root {
+    --accent-color: #5b49e3;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.6);
+
+    &:hover, &.active {
+        color: rgba(255, 255, 255, 1);
+    }
+}
+
+.nav-home {
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+        color: rgba(255, 255, 255, 1);
+    }
+}
+
+.title-writing {
+    font-family: "Chivo Variable", sans-serif;
+}
+
+.subtitle-writing {
+    font-family: "Rajdhani", sans-serif;
+}

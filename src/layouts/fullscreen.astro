@@ -1,0 +1,24 @@
+---
+import Base from './base.astro'
+import '../styles/fullscreen.scss'
+
+const { title, activePage } = Astro.props
+---
+<Base title={title}>
+    <div class="h-screen bg-fixed dynamic-bg">
+        <nav class="absolute w-screen flex justify-center items-center gap-10 h-20 p-3">
+            <a class:list={['nav-link', {active: activePage === 'about'}, 'text-2xl']} href="/about">
+                About
+            </a>
+            <a class:list={['nav-link', {active: activePage === 'mailing'}, 'text-2xl']} href="/mailing">
+                Mailing List
+            </a>
+            <a class:list={['nav-link', {active: activePage === 'socialmedia'}, 'text-2xl']} href="/socialmedia">
+                Social Media
+            </a>
+        </nav>
+        <div class="grid h-full place-items-center">
+            <slot />
+        </div>
+    </div>
+</Base>

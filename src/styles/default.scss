@@ -1,0 +1,51 @@
+@use 'common';
+
+:root {
+    --link-color: #8377e1;
+}
+
+.dynamic-bg {
+    animation:
+        left-color 21s infinite,
+        right-color 19s infinite;
+    animation-timing-function: linear;
+    background: linear-gradient(
+        90deg,
+        var(--left-color) 0%,
+        var(--accent-color) 50%,
+        var(--right-color) 100%
+    );
+}
+
+.content {
+    width: 1000px;
+
+    h1 {
+        font-size: 3rem;
+        font-weight: 600;
+        font-family: "Chivo Variable", sans-serif;
+    }
+
+    p {
+        text-align: justify;
+    }
+
+    h1, p {
+        & + p {
+            margin-top: 1rem;
+        }
+    }
+
+    hr {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    a {
+        color: var(--link-color);
+
+        &:hover {
+            color: var(--accent-color);
+        }
+    }
+}

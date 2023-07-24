@@ -1,6 +1,11 @@
 ---
+layout: ../layouts/default.astro
+title: 'AInk News – About'
+activePage: 'about'
 ---
+
 # About
+
 AInk News is a whole new news experience for everyone.
 
 Customized to the individual user's interests, needs and preferences, AInk is the central news platform of the future.

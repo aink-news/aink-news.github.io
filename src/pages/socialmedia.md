@@ -1,4 +1,7 @@
 ---
+layout: ../layouts/default.astro
+title: 'AInk News – Social Media'
+activePage: 'about'
 ---
 
 # Social Media

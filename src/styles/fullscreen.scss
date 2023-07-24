@@ -1,0 +1,30 @@
+@use 'common';
+
+@property --degree {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 0deg;
+}
+
+@keyframes rotation {
+    from {
+        --degree: 0deg;
+    }
+    to {
+        --degree: 360deg;
+    }
+}
+
+.dynamic-bg {
+    animation:
+        rotation 20s infinite,
+        left-color 21s infinite,
+        right-color 19s infinite;
+    animation-timing-function: linear;
+    background: linear-gradient(
+        var(--degree),
+        var(--left-color) 0%,
+        var(--accent-color) 50%,
+        var(--right-color) 100%
+    );
+}
