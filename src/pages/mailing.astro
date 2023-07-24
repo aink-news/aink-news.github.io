@@ -6,12 +6,13 @@ import "@fontsource/rajdhani/500.css";
 <head>
     <meta charset="utf-8">
     <title>AInk News – Mailing List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <div class="h-screen bg-fixed moving-bg">
-    <nav class="absolute flex items-center w-screen h-20 p-3">
+    <nav class="absolute flex flex-col lg:flex-row items-center w-screen h-20 p-3">
         <div class="text-4xl h-[1em]">
-            <div class="absolute">
+            <div class="lg:absolute block">
                 <a class="nav-home" href="/">
                     <h1 class="title-writing">AInk News</h1>
                 </a>
@@ -30,7 +31,7 @@ import "@fontsource/rajdhani/500.css";
         </div>
     </nav>
     <div class="grid h-full place-items-center">
-        <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white shadow-md rounded w-1/5 px-8 pt-6 pb-8 mb-4">
+        <form method="post" action="https://listmonk.aink.news/subscription/form" class="bg-white shadow-md rounded w-[95%] lg:w-1/5 px-8 pt-6 pb-8 mb-4">
             <div class="mb-4">
                 <h2 class="text-3xl">Mailing List</h2>
                 <input type="hidden" name="nonce">

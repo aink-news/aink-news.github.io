@@ -8,21 +8,22 @@ import Content from "../components/about.md";
 <head>
     <meta charset="utf-8">
     <title>AInk News – About</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<nav class="flex items-center w-screen h-20 p-3 static-bg">
+<nav class="static-bg flex flex-col lg:flex-row items-center w-screen h-20 p-3">
     <div class="text-4xl h-[1em]">
-        <div class="absolute">
+        <div class="lg:absolute block">
             <a class="nav-home" href="/">
                 <h1 class="title-writing">AInk News</h1>
             </a>
         </div>
     </div>
     <div class="flex justify-center items-center grow gap-10">
-        <a class="nav-link active text-2xl" href="/about">
+        <a class="nav-link text-2xl" href="/about">
             About
         </a>
-        <a class="nav-link text-2xl" href="/mailing">
+        <a class="nav-link active text-2xl" href="/mailing">
             Mailing List
         </a>
         <a class="nav-link text-2xl" href="/socialmedia">

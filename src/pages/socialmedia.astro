@@ -8,11 +8,12 @@ import Content from "../components/socialmedia.md";
 <head>
     <meta charset="utf-8">
     <title>AInk News – Social Media</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<nav class="flex items-center w-screen h-20 p-3 static-bg">
+<nav class="static-bg flex flex-col lg:flex-row items-center w-screen h-20 p-3">
     <div class="text-4xl h-[1em]">
-        <div class="absolute">
+        <div class="lg:absolute block">
             <a class="nav-home" href="/">
                 <h1 class="title-writing">AInk News</h1>
             </a>
@@ -22,10 +23,10 @@ import Content from "../components/socialmedia.md";
         <a class="nav-link text-2xl" href="/about">
             About
         </a>
-        <a class="nav-link text-2xl" href="/mailing">
+        <a class="nav-link active text-2xl" href="/mailing">
             Mailing List
         </a>
-        <a class="nav-link active text-2xl" href="/socialmedia">
+        <a class="nav-link text-2xl" href="/socialmedia">
             Social Media
         </a>
     </div>
@@ -99,5 +100,10 @@ import Content from "../components/socialmedia.md";
 
     .content a:hover {
         color: var(--accent-color);
+    }
+
+    .content ul {
+        list-style-type: disc;
+        margin-left: 2rem;
     }
 </style>
