@@ -20,9 +20,14 @@ const navigationEntries = [
     },
 ]
 
+var path = Astro.url.pathname
+if (path.endsWith('/') && path.length > 1) {
+    path = path.slice(0, -1)
+}
+
 const navigation = navigationEntries.map(entry => ({
     ...entry,
-    isActive: entry.path === Astro.url.pathname
+    isActive: entry.path === path
 }))
 
 const { showLogo } = Astro.props
