@@ -1,0 +1,46 @@
+---
+import MobileNav from '../components/mobile-nav.astro'
+
+interface Props {
+    showLogo?: boolean
+}
+
+const navigationEntries = [
+    {
+        title: 'About',
+        path: '/about'
+    },
+    {
+        title: 'Mailing List',
+        path: '/mailing'
+    },
+    {
+        title: 'Social Media',
+        path: '/socialmedia'
+    },
+]
+
+const navigation = navigationEntries.map(entry => ({
+    ...entry,
+    isActive: entry.path === Astro.url.pathname
+}))
+
+const { showLogo } = Astro.props
+---
+<div class="text-4xl h-[1em]">
+    {showLogo &&
+        <div class="lg:absolute block">
+            <a class="nav-home" href="/">
+                <h1 class="title-writing">AInk News</h1>
+            </a>
+        </div>
+    }
+</div>
+<div class="hidden lg:flex justify-center items-center grow gap-10">
+    {navigation.map(entry => (
+        <a class:list={['nav-link', {active: entry.isActive}, 'text-2xl']} href={entry.path}>
+            {entry.title}
+        </a>
+    ))}
+</div>
+<MobileNav navigation={navigation} />

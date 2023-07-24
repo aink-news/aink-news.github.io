@@ -1,0 +1,118 @@
+---
+interface Props {
+    navigation: {
+        title: string
+        path: string
+        isActive: boolean
+    }[]
+}
+
+const { navigation } = Astro.props
+---
+<div class="lg:hidden">
+    <div id="mobile-menu">
+        <input type="checkbox">
+        <div>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="w-full sm:w-1/2 bg-gray-900 p-10 pt-20">
+            {navigation.map(entry => (
+                <li>
+                    <a class:list={['nav-link', {active: entry.isActive}, 'text-2xl']} href={entry.path}>
+                        {entry.title}
+                    </a>
+                </li>
+            ))}
+        </ul>
+    </div>
+</div>
+
+<style lang="scss">
+    #mobile-menu {
+        display: block;
+        position: relative;
+        -webkit-user-select: none;
+        user-select: none;
+
+        span {
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: white;
+            border-radius: 3px;
+            z-index: 1;
+            transition:
+                transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+
+            &:first-child {
+                transform-origin: 0% 0%;
+            }
+
+            &:nth-child(2) {
+                transform-origin: 0% 50%;
+            }
+
+            &:last-child {
+                transform-origin: 0% 100%;
+                margin-bottom: 0;
+            }
+        }
+
+        ul {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            list-style-type: none;
+            -webkit-font-smoothing: antialiased;
+            transform-origin: 0% 0%;
+            transform: translate(100%, 0);
+            transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+
+            li {
+                padding: 10px 0;
+            }
+        }
+
+        input {
+            display: block;
+            width: 40px;
+            height: 32px;
+            position: absolute;
+            top: -7px;
+            right: -5px;
+            cursor: pointer;
+            opacity: 0;
+            z-index: 2;
+            -webkit-touch-callout: none;
+
+            &:checked {
+                & ~ div > span {
+                    &:first-child {
+                        transform: rotate(45deg) translate(3px, -4px);
+                    }
+
+                    &:nth-child(2) {
+                        opacity: 0;
+                        transform: rotate(0deg) scale(0, 0.2);
+                    }
+
+                    &:last-child {
+                        transform: rotate(-45deg) translate(1px, 6px);
+                    }
+                }
+
+                & ~ ul {
+                    transform: none;
+                }
+            }
+        }
+    }
+</style>
+
