@@ -1,55 +1,57 @@
-@use 'common';
+@use "common";
 
 :root {
-    --degree: 90deg;
+  --degree: 90deg;
 }
 
 @property --degree {
-    syntax: '<angle>';
-    inherits: false;
-    initial-value: 90deg;
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 90deg;
 }
 
 @keyframes rotation {
-    from {
-        --degree: 90deg;
-    }
-    to {
-        --degree: 450deg;
-    }
+  from {
+    --degree: 90deg;
+  }
+  to {
+    --degree: 450deg;
+  }
 }
 
 .dynamic-bg {
-    animation:
-        20s rotation,
-        17s overlay-size,
-        23s left-color,
-        19s right-color;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: infinite;
+  animation:
+    20s rotation,
+    17s overlay-size,
+    23s left-color,
+    19s right-color;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  background: linear-gradient(
+      var(--degree),
+      transparent calc(50% - var(--overlay-size-landscape)),
+      var(--accent-color) 50%,
+      transparent calc(50% + var(--overlay-size-landscape))
+    ),
+    linear-gradient(
+      var(--degree),
+      var(--left-color) 0%,
+      var(--accent-color) 50%,
+      var(--right-color) 100%
+    );
+
+  @media (max-aspect-ratio: 1/1) {
     background: linear-gradient(
         var(--degree),
-        transparent calc(50% - var(--overlay-size-landscape)),
+        transparent calc(50% - var(--overlay-size-portrait)),
         var(--accent-color) 50%,
-        transparent calc(50% + var(--overlay-size-landscape))
-    ), linear-gradient(
+        transparent calc(50% + var(--overlay-size-portrait))
+      ),
+      linear-gradient(
         var(--degree),
         var(--left-color) 0%,
         var(--accent-color) 50%,
         var(--right-color) 100%
-    );
-
-    @media (max-aspect-ratio: 1/1) {
-        background: linear-gradient(
-            var(--degree),
-            transparent calc(50% - var(--overlay-size-portrait)),
-            var(--accent-color) 50%,
-            transparent calc(50% + var(--overlay-size-portrait))
-        ), linear-gradient(
-            var(--degree),
-            var(--left-color) 0%,
-            var(--accent-color) 50%,
-            var(--right-color) 100%
-        );
-    }
+      );
+  }
 }

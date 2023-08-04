@@ -1,107 +1,108 @@
-@use 'sass:color';
-@use 'sass:math';
+@use "sass:color";
+@use "sass:math";
 
 @mixin gradient-color($name, $colors) {
-    @property --#{$name} {
-        syntax: '<color>';
-        inherits: false;
-        initial-value: nth($colors, 1);
+  @property --#{$name} {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: nth($colors, 1);
+  }
+
+  @keyframes #{$name} {
+    $length: length($colors);
+    $step: math.div(100%, $length - 1);
+
+    @for $i from 1 through $length {
+      $color: nth($colors, $i);
+      $position: ($i - 1) * $step;
+
+      #{$position} {
+        --#{$name}: #{$color};
+      }
     }
-
-    @keyframes #{$name} {
-        $length: length($colors);
-        $step: math.div(100%, $length - 1);
-
-        @for $i from 1 through $length {
-            $color: nth($colors, $i);
-            $position: ($i - 1) * $step;
-
-            #{$position} {
-                --#{$name}: #{$color};
-            }
-        }
-    }
+  }
 }
 
 $left-colors: (
-    rgb(146, 44, 174),
-    rgb(50, 81, 146),
-    rgb(45, 120, 163),
-    rgb(29, 163, 143),
-    rgb(146, 44, 174),
+  rgb(146, 44, 174),
+  rgb(50, 81, 146),
+  rgb(45, 120, 163),
+  rgb(29, 163, 143),
+  rgb(146, 44, 174)
 );
 $right-colors: (
-    rgb(123, 0, 100),
-    rgb(138, 26, 87),
-    rgb(153, 52, 74),
-    rgb(183, 0, 0),
-    rgb(123, 0, 100),
+  rgb(123, 0, 100),
+  rgb(138, 26, 87),
+  rgb(153, 52, 74),
+  rgb(183, 0, 0),
+  rgb(123, 0, 100)
 );
 
 $accent-color: #5b49e3;
 
 :root {
-    --left-color: #{nth($left-colors, 1)};
-    --right-color: #{nth($right-colors, 1)};
-    --accent-color: #{$accent-color};
-    --overlay-size-landscape: 50vh;
-    --overlay-size-portrait: 50vw;
+  --left-color: #{nth($left-colors, 1)};
+  --right-color: #{nth($right-colors, 1)};
+  --accent-color: #{$accent-color};
+  --overlay-size-landscape: 50vh;
+  --overlay-size-portrait: 50vw;
 }
 
 @include gradient-color(left-color, $left-colors);
 @include gradient-color(right-color, $right-colors);
 
 @property --overlay-size-landscape {
-    syntax: '<length>';
-    inherits: false;
-    initial-value: 50vh;
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 50vh;
 }
 
 @property --overlay-size-portrait {
-    syntax: '<length>';
-    inherits: false;
-    initial-value: 50vw;
+  syntax: "<length>";
+  inherits: false;
+  initial-value: 50vw;
 }
 
 @keyframes overlay-size {
-    from {
-        --overlay-size-landscape: 50vh;
-        --overlay-size-portrait: 50vw;
-    }
-    33% {
-        --overlay-size-landscape: 40vh;
-        --overlay-size-portrait: 40vw;
-    }
-    66% {
-        --overlay-size-landscape: 60vh;
-        --overlay-size-portrait: 60vw;
-    }
-    to {
-        --overlay-size-landscape: 50vh;
-        --overlay-size-portrait: 50vw;
-    }
+  from {
+    --overlay-size-landscape: 50vh;
+    --overlay-size-portrait: 50vw;
+  }
+  33% {
+    --overlay-size-landscape: 40vh;
+    --overlay-size-portrait: 40vw;
+  }
+  66% {
+    --overlay-size-landscape: 60vh;
+    --overlay-size-portrait: 60vw;
+  }
+  to {
+    --overlay-size-landscape: 50vh;
+    --overlay-size-portrait: 50vw;
+  }
 }
 
 .nav-link {
-    color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 
-    &:hover, &.active {
-        color: rgba(255, 255, 255, 1);
-    }
+  &:hover,
+  &.active {
+    color: rgba(255, 255, 255, 1);
+  }
 }
 
 .nav-home {
-    color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 
-    &:hover {
-        color: rgba(255, 255, 255, 1);
-    }
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
 }
 
 .title-writing {
-    font-family: "Chivo Variable", sans-serif;
+  font-family: "Chivo Variable", sans-serif;
 }
 
 .subtitle-writing {
-    font-family: "Rajdhani", sans-serif;
+  font-family: "Rajdhani", sans-serif;
 }

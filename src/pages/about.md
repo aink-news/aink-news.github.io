@@ -1,7 +1,8 @@
 ---
 layout: ../layouts/default.astro
-title: 'AInk News – About'
-activePage: 'about'
+title: "AInk News – About"
+description: "AInk News About page, describing the startup that offers new news experiences for everyone."
+activePage: "about"
 ---
 
 # About
