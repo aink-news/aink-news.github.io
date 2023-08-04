@@ -1,7 +1,7 @@
 ---
 layout: ../layouts/default.astro
-title: 'AInk News – Social Media'
-activePage: 'socialmedia'
+title: "AInk News – Social Media"
+activePage: "socialmedia"
 ---
 
 # Social Media
