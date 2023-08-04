@@ -5,12 +5,13 @@ import '../styles/fullscreen.scss'
 
 interface Props {
     title: string
+    description: string
     showLogo?: boolean
 }
 
-const { title, showLogo } = Astro.props
+const { title, showLogo, description } = Astro.props
 ---
-<Base title={title}>
+<Base title={title} description={description}>
     <div class="h-screen flex flex-col dynamic-bg">
         <nav class="lg:absolute flex justify-between items-center w-screen h-20 p-3">
             <Nav showLogo={showLogo} />
