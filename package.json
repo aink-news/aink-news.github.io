@@ -11,6 +11,8 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@astrojs/prefetch": "^0.3.0",
+    "@astrojs/sitemap": "^2.0.1",
     "@astrojs/tailwind": "^4.0.0",
     "@astrojs/vercel": "^3.8.0",
     "@fontsource-variable/chivo": "^5.0.8",
